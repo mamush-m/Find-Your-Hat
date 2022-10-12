@@ -32,8 +32,6 @@ class Field {
                 console.log('going out of bounds, already at top')
             }else {
                 this._indexA -= 1;
-                // this._fieldArr[this._indexA][this._indexB] = pathCharacter;
-                // this.print();
 
                 if(this._indexA == destinationA && this._indexB == destinationB) {
                     this._fieldArr[this._indexA][this._indexB] = pathCharacter;
@@ -54,8 +52,6 @@ class Field {
                 console.log('going out of bounds, already at bottom')
             }else {
                 this._indexA += 1;
-                // this._fieldArr[this._indexA][this._indexB] = pathCharacter;
-                // this.print();
 
                 if(this._indexA == destinationA && this._indexB == destinationB) {
                     this._fieldArr[this._indexA][this._indexB] = pathCharacter;
@@ -76,8 +72,6 @@ class Field {
                 console.log('already at beginning of line');
             }else {
                 this._indexB -= 1;
-                // this._fieldArr[this._indexA][this._indexB] = pathCharacter;
-                // this.print();
 
                 if(this._indexA == destinationA && this._indexB == destinationB) {
                     this._fieldArr[this._indexA][this._indexB] = pathCharacter;
@@ -98,8 +92,6 @@ class Field {
                 console.log('already at end of line')
             }else {
                 this._indexB += 1;
-                // this._fieldArr[this._indexA][this._indexB] = pathCharacter;
-                // this.print();
 
                 if(this._indexA == destinationA && this._indexB == destinationB) {
                     this._fieldArr[this._indexA][this._indexB] = pathCharacter;
@@ -117,6 +109,43 @@ class Field {
             }
         }
     }
+
+    static generateField(height, width) {
+        let resultField = [];
+
+        for (let heightCount = 0; heightCount < height; heightCount++) {
+            let line = [];
+
+            for (let widthCount = 0; widthCount < width; widthCount++) {
+                line.push(fieldCharacter);
+            }
+
+            resultField.push(line)
+        }
+
+        resultField.forEach(line => {
+            let num = Math.floor(Math.random() * width);
+            console.log('haha', num)
+            line[num] = hole
+        })
+
+        const hatLine = Math.floor(Math.random() * (resultField.length - 1));
+        console.log('hatline', hatLine)
+
+        if(hatLine == 0) {
+            let contingency = Math.ceil(Math.random() * (resultField.length-1));
+            const num = Math.ceil(Math.random() * width-1)
+            resultField[contingency][num] = hat
+        }else {
+            const num = Math.ceil(Math.random() * width-1)
+            resultField[hatLine][num] = hat;
+        }
+
+        resultField.forEach(line => console.log(line))
+
+
+    }
+
 
 }
 
@@ -142,4 +171,5 @@ function handleGame(fieldInput) {
 
 }
 
-handleGame(input);
+// handleGame(input);
+Field.generateField(3, 5);
