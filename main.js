@@ -125,12 +125,10 @@ class Field {
 
         resultField.forEach(line => {
             let num = Math.floor(Math.random() * width);
-            console.log('haha', num)
             line[num] = hole
         })
 
         const hatLine = Math.floor(Math.random() * (resultField.length - 1));
-        console.log('hatline', hatLine)
 
         if(hatLine == 0) {
             let contingency = Math.ceil(Math.random() * (resultField.length-1));
@@ -141,9 +139,9 @@ class Field {
             resultField[hatLine][num] = hat;
         }
 
+        this._fieldArr = resultField;
+
         resultField.forEach(line => console.log(line))
-
-
     }
 
 
@@ -171,5 +169,4 @@ function handleGame(fieldInput) {
 
 }
 
-// handleGame(input);
-Field.generateField(3, 5);
+handleGame(input);
